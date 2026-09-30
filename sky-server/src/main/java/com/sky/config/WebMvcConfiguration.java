@@ -38,6 +38,19 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     }
 
     /**
+     * 设置静态资源映射（knife4j 的 doc.html、webjars）
+     * 因为本类继承了 WebMvcConfigurationSupport，默认的静态资源处理会被覆盖，必须手动注册
+     * @param registry
+     */
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        log.info("开始设置静态资源映射...");
+        registry.addResourceHandler("/doc.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    /**
      * 通过knife4j生成接口文档
      * @return
      */
