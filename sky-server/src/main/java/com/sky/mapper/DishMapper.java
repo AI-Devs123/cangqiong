@@ -76,5 +76,4 @@ public interface DishMapper {
      * @param ids
      */
     void deleteByIds(@Param("ids") List<Long> ids);
-
 }
